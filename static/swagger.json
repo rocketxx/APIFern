@@ -1,0 +1,154 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Mathematical Calculations API",
+      "version": "1.0.0",
+      "description": "API for various mathematical calculations"
+    },
+    "paths": {
+      "/factorial": {
+        "get": {
+          "summary": "Calculate factorial",
+          "description": "Calculates the factorial of a number (n! = n × (n-1) × ... × 1). Factorial of 0 is 1.",
+          "parameters": [
+            {
+              "name": "n",
+              "in": "query",
+              "description": "Positive integer (0-100)",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful calculation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "number": {"type": "integer"},
+                      "factorial": {"type": "integer"}
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid input",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/harmonic_number": {
+        "get": {
+          "summary": "Calculate harmonic number",
+          "description": "Calculates the n-th harmonic number (Hₙ = 1 + 1/2 + 1/3 + ... + 1/n). Used in various areas of number theory and analysis.",
+          "parameters": [
+            {
+              "name": "n",
+              "in": "query",
+              "description": "Positive integer ≥1",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 10000
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful calculation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "n": {"type": "integer"},
+                      "harmonic_number": {"type": "number"}
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid input",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/triangular_number": {
+        "get": {
+          "summary": "Calculate triangular number",
+          "description": "Calculates the n-th triangular number (Tₙ = n(n+1)/2). Represents dots that can form an equilateral triangle.",
+          "parameters": [
+            {
+              "name": "n",
+              "in": "query",
+              "description": "Non-negative integer",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful calculation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "n": {"type": "integer"},
+                      "triangular_number": {"type": "integer"}
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid input",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
